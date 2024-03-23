@@ -6,9 +6,9 @@ import {GLTFLoader} from './GLTFLoader.js';
 // 场景
 const scene = new THREE.Scene();
 // 相机
-const camera = new THREE.PerspectiveCamera(45,window.innerWidth / window.innerHeight,1,1000);
-camera.position.set(10, 2, 0);
-camera.lookAt(0,2,0);
+const camera = new THREE.PerspectiveCamera(45,window.innerWidth / window.innerHeight,0.1,1000);
+camera.position.set(10, 0.5, 0);
+camera.lookAt(0,0.5,0);
 // 渲染器
 const renderer = new THREE.WebGLRenderer();
 renderer.antialias = true;
@@ -20,9 +20,16 @@ window.onresize = function() {
     camera.updateProjectionMatrix();
 };
 document.body.appendChild(renderer.domElement);
+
 const orbitControls = new OrbitControls(camera, renderer.domElement);
-orbitControls.target.set(0, 2, 0);
+orbitControls.enablePan = false;
+orbitControls.minDistance = 5;
+orbitControls.maxDistance = 15;
+orbitControls.maxPolarAngle = Math.PI/2;
+orbitControls.target.set(0, 0.5, 0);
 orbitControls.update();
+
+
 // 灯
 const color = 0xFFFFFF;
 const intensity = 2;
