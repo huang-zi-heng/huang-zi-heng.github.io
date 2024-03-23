@@ -6,8 +6,7 @@ import {GLTFLoader} from './GLTFLoader.js';
 // 场景
 const scene = new THREE.Scene();
 // 相机
-const camera = new THREE.PerspectiveCamera();
-camera.aspect = window.innerWidth / window.innerHeight;
+const camera = new THREE.PerspectiveCamera(45,window.innerWidth / window.innerHeight,1,1000);
 camera.position.set(10, 2, 0);
 camera.lookAt(0,2,0);
 // 渲染器
